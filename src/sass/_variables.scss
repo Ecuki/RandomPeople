@@ -1,0 +1,31 @@
+$dark-theme: false !default;
+$primary-color: #f8bbd0 !default;
+$accent-color: #f1da1d !default;
+$border-radius: 0.25rem !default;
+$main-spacing: 0.25rem !default;
+
+// separate typografy and colors etc!!
+@if $dark-theme {
+  $primary-color: darken($primary-color, 60%);
+  $accent-color: lighten($accent-color, 60%);
+}
+$theme-colors: (
+  "success": #28a745,
+  "info": #17a2b8,
+  "warning": #ffc107
+);
+$screen-sizes: (
+  xs: 479px,
+  sm: 767px,
+  md: 959px,
+  lg: 1219px
+);
+
+$font-family: arial;
+$font-size: 20px;
+:export {
+  fontFamily: $font-family;
+  accentColor: $accent-color;
+  fontSize: 20;
+  chartHeight: 25;
+}

@@ -1,0 +1,43 @@
+.footer {
+  position: relative;
+  height: 30vh;
+  width: 100%;
+  background-color: #000;
+}
+// .footer__spinner {
+//   position: fixed;
+//   left: 0;
+//   top: 0;
+//   height: 20px;
+//   width: 20px;
+//   border-radius: 50%;
+//   background-color: rgb(148, 141, 141);
+//   animation-name: spinner;
+//   animation-duration: 5s;
+//   animation-timing-function: ease-in-out;
+//   animation-delay: 2s;
+//   animation-iteration-count: infinite;
+//   animation-direction: alternate;
+//   z-index: 1;
+//   //   animation: spinner 2s ease;
+// }
+// @keyframes spinner {
+//   0% {
+//   }
+//   25% {
+//     left: calc(100% - 20px);
+//     top: 0;
+//   }
+//   50% {
+//     left: calc(100% - 20px);
+//     top: calc(100% - 20px);
+//   }
+//   75% {
+//     left: 0vw;
+//     top: calc(100% - 20px);
+//   }
+//   100% {
+//     left: 0vw;
+//     top: 0vw;
+//   }
+// }

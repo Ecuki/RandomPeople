@@ -1,0 +1,23 @@
+.App {
+  min-height: 100vh;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+.btn {
+  letter-spacing: $font-size/8;
+  font-size: $font-size * 0.8;
+  font-family: $font-family;
+  text-transform: uppercase;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.3s;
+  &:hover {
+    background-color: #fff;
+    color: #000;
+  }
+}

@@ -1,0 +1,53 @@
+.weather {
+  min-height: 75vh;
+  width: 100%;
+  display: flex;
+  // justify-content: ;;
+  align-items: center;
+  justify-items: center;
+  box-sizing: border-box;
+  margin-top: $font-size;
+  &__img-conteiner {
+    grid-area: img;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    z-index: -1;
+  }
+}
+
+.cv__img {
+  width: 70%;
+  height: 80%;
+  z-index: 2;
+
+  filter: none;
+  -webkit-filter: none;
+}
+
+button::-moz-focus-inner {
+  border: 0;
+}
+.cv__btn {
+  width: 80%;
+  color: #fff;
+  padding: 5% 0;
+  font-size: $font-size * 0.6;
+  background-color: #000;
+}
+
+.cv__name {
+}
+.cv__email {
+}
+.cv__contact {
+}
