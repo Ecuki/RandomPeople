@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import { Person } from "./Person";
+import MyMap from "./Map";
 import Footer from "./Footer";
 const personAPI = "https://randomuser.me/api/";
 class App extends React.Component {
@@ -59,9 +60,10 @@ class App extends React.Component {
   render() {
     const PersonWitchFetching = this.withFetching(personAPI)(Person);
     return (
-      <div className="App">
+      <div className="App" id="App">
         <Header />
         <PersonWitchFetching withFetching={this.withFetching} />
+
         <Footer />
       </div>
     );

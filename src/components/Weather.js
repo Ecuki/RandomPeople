@@ -41,7 +41,7 @@ function showClouds(icon, clouds) {
   const iconUrl = `http://openweathermap.org/img/w/${icon}.png`;
   return (
     <>
-      <span className="clouds__value">{clouds}</span>
+      <span className="clouds__value">{clouds} %</span>
       <img className="clouds__icon" src={iconUrl} alt="" />
     </>
   );
@@ -82,7 +82,8 @@ export const Weather = ({ data, isLoanding, error }) => {
   const { main, weather, clouds, sys } = data;
 
   return (
-    <div className="weather" id="weather">
+    <div className="weather section" id="weather">
+      <h1 className="weather__title">Weather:</h1>
       <WeatherElement
         type="temperature"
         text="This temperature parameter accounts for the human perception of

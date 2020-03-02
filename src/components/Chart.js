@@ -41,8 +41,9 @@ const MyChart = () => {
       options: {
         title: {
           display: true,
-          fontColor: `${variables.accentColor}`,
+          fontColor: `white`,
           fontSize: `${variables.fontSize}`,
+          fontFamily: `${variables.fontFamily}`,
           text: "Happiness chart",
           position: "top"
         },
@@ -50,7 +51,7 @@ const MyChart = () => {
           position: "bottom",
           labels: {
             // This more specific font property overrides the global property
-            fontColor: `${variables.accentColor}`,
+            fontColor: `white`,
             fontFamily: `${variables.fontFamily}`
           }
         },
@@ -76,8 +77,8 @@ const MyChart = () => {
   }
 
   const myChart = (
-    <section className="chart" id="chart">
-      <canvas ref={canvasRef} width={100} height={40}></canvas>;
+    <section className="chart section" id="chart">
+      <canvas ref={canvasRef} height={320} width={window.innerWidth}></canvas>;
     </section>
   );
   return myChart;

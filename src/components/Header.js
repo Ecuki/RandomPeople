@@ -1,99 +1,100 @@
 import React from "react";
 import logo from "../assets/logo2.png";
-// import "../sass/_Header.scss";
-function Header() {
-  const searchForActivClass = object => {
-    const classList = object.classList;
-    let activeClass = "";
-    for (let i = 0; i < classList.length; i++) {
-      const tempClass = classList[i];
-      if (tempClass.includes("--active")) {
-        activeClass += tempClass;
-      }
-    }
-    return activeClass;
+
+function Button({ active, name, onClick }) {
+  const getClassName = () => {
+    const className = "nav__item-link btn";
+    const classActive = className + " nav__item-link--active";
+    return name === active ? classActive : className;
   };
-  const handleClickButton = e => {
+  return (
+    <li className="nav__item ">
+      <a
+        name={name}
+        href="/"
+        className={getClassName()}
+        onClick={e => onClick(e)}
+      >
+        {name}
+      </a>
+    </li>
+  );
+}
+
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      active: "person"
+    };
+    this.sections = ["person", "weather", "chart", "map", "contact"];
+  }
+  scrollTo = e => {
     e.preventDefault();
     document
       .querySelector(`#${e.target.name}`)
       .scrollIntoView({ behavior: "smooth" });
-
-    const classList = [...e.target.classList];
-    let activeClass = searchForActivClass(e.target);
-
-    if (e.target.classList.contains(`${activeClass}`)) {
-      return;
-    } else {
-      const buttons = document.getElementsByClassName(`${classList[0]}`);
-      [...buttons].map(button => {
-        if (searchForActivClass(button)) {
-          activeClass += searchForActivClass(button);
-          button.classList.remove(activeClass);
-        }
-        return activeClass;
-      });
-      e.target.classList.add(activeClass);
-      return (activeClass = "");
-    }
   };
-  const header = (
-    <header className="header" id="header">
-      <div className="logo header__logo">
-        <img
-          className="logo__img"
-          src={logo}
-          alt="JSecrets logo https://logomakr.com/"
+  handleChangeButton(e) {
+    e.preventDefault();
+    const active = e.target.name;
+    this.setState({ active });
+    this.scrollTo(e);
+  }
+
+  createNav() {
+    let nav = [];
+    for (let section of this.sections) {
+      nav.push(
+        <Button
+          key={section}
+          name={section}
+          onClick={e => this.handleChangeButton(e)}
+          active={this.state.active}
         />
-        <p className="logo__text">Hello</p>
-      </div>
-      <nav className="nav">
-        <ul className="nav__list">
-          <li className="nav__item ">
-            <a
-              name="header"
-              href="/"
-              className="nav__item-link nav__item-link--active btn"
-              onClick={e => handleClickButton(e)}
-            >
-              Start
-            </a>
-          </li>
-          <li className="nav__item">
-            <a
-              name="chart"
-              href="/"
-              className="nav__item-link btn"
-              onClick={e => handleClickButton(e)}
-            >
-              Chart
-            </a>
-          </li>
-          <li className="nav__item">
-            <a
-              name="map"
-              href="/"
-              className="nav__item-link btn"
-              onClick={e => handleClickButton(e)}
-            >
-              Map
-            </a>
-          </li>
-          <li className="nav__item">
-            <a
-              name="footer"
-              href="/"
-              className="nav__item-link btn"
-              onClick={e => handleClickButton(e)}
-            >
-              Contact
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </header>
-  );
-  return header;
+      );
+    }
+    return nav;
+  }
+  handleScroll = () => {
+    const windowY = window.pageYOffset;
+    for (let section of this.sections) {
+      if (section !== this.state.active) {
+        const element = document.getElementById(section);
+        if (
+          element &&
+          element.offsetTop < windowY + element.offsetHeight / 2 &&
+          !(
+            element.offsetTop + element.offsetHeight <
+            windowY + element.offsetHeight
+          )
+        ) {
+          this.setState({
+            active: section
+          });
+        }
+      }
+    }
+    return true;
+  };
+  render() {
+    document.addEventListener("wheel", () => this.handleScroll(), false);
+    return (
+      <>
+        <div className="logo">
+          <img
+            className="logo__img"
+            src={logo}
+            alt="JSecrets logo https://logomakr.com/"
+          />
+          <p className="logo__text">It's nice to see you here</p>
+        </div>
+        <nav className="nav">
+          <ul className="nav__list">{this.createNav()}</ul>
+        </nav>
+      </>
+    );
+  }
 }
 
 export default Header;

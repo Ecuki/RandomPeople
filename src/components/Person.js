@@ -102,7 +102,7 @@ export const Person = ({
   withFetching
 }) => {
   if (!data) {
-    return <p>Brak danych</p>;
+    return <p className="error">Brak danych</p>;
   }
   if (error) {
     return <p>{error.message}</p>;
@@ -121,11 +121,11 @@ export const Person = ({
 
   return (
     <>
-      <div className="person">
+      <div className="person section" id="person">
         <Image img={picture.large} alt="Random person" />
         <Button
           onClick={getRandomPerson}
-          text={"Random"}
+          text={"? Random ?"}
           className="random__btn btn"
         />
         <NamesDetails names={name} />

@@ -16,7 +16,7 @@ function MyMap(props) {
   const position = [coordinates.latitude * 1, coordinates.longitude * 1];
 
   const myMap = (
-    <Map center={position} zoom={zoom} id="map" className="map">
+    <Map center={position} zoom={zoom} id="map" className="map section">
       <TileLayer
         attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

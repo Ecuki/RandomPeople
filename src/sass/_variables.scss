@@ -1,31 +1,41 @@
-$dark-theme: false !default;
-$primary-color: #f8bbd0 !default;
-$accent-color: #f1da1d !default;
-$border-radius: 0.25rem !default;
-$main-spacing: 0.25rem !default;
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700,900i&display=swap&subset=latin-ext");
+@import url("https://fonts.googleapis.com/css?family=Kranky&display=swap");
 
-// separate typografy and colors etc!!
-@if $dark-theme {
-  $primary-color: darken($primary-color, 60%);
-  $accent-color: lighten($accent-color, 60%);
-}
-$theme-colors: (
-  "success": #28a745,
-  "info": #17a2b8,
-  "warning": #ffc107
-);
-$screen-sizes: (
+$primary-color: #171717 !default;
+$accent-color: #f1da1d !default;
+$main-padding: 10px;
+$breakpoints: (
   xs: 479px,
   sm: 767px,
   md: 959px,
   lg: 1219px
 );
 
-$font-family: arial;
+$font-family: "Lato";
+$font-permanent: "Kranky";
 $font-size: 20px;
 :export {
-  fontFamily: $font-family;
+  fontFamily: $font-permanent;
   accentColor: $accent-color;
   fontSize: 20;
-  chartHeight: 25;
+}
+@mixin for-phone-only {
+  @media (max-width: 599px) {
+    @content;
+  }
+}
+@mixin for-tablet-portrait-up {
+  @media (min-width: 600px) {
+    @content;
+  }
+}
+@mixin for-tablet-landscape-up {
+  @media (min-width: 900px) {
+    @content;
+  }
+}
+@mixin for-desktop-up {
+  @media (min-width: 1200px) {
+    @content;
+  }
 }
